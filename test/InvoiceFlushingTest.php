@@ -24,7 +24,7 @@ class InvoiceFlushingTest extends TestCase
         $req = new InvoiceFlushingReq();
         $req->serialNo = "";  //发票序列号 必填
         $req->originalSerialNo = "";  //指定生成红票流水号 非必填
-        $req->redReason = 2;  //红冲原因 非必填
+        $req->redReason = "";  //红冲原因 非必填
 
         $res = InvoiceFlushing::req($client, $req);
         var_dump($res);
