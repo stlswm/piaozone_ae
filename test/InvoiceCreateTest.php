@@ -25,7 +25,7 @@ class InvoiceCreateTest extends TestCase
         $req = new InvoiceCreateReq();
         $req->salerTaxNo = Config::SalerTaxNo;
         $req->salerAddress = Config::SalerAddress;
-        $req->buyerName = '王敏-test';
+        $req->buyerName = '王敏';
         $req->invoiceAmount = '1';//金额合计(不含税)
         $req->type = '0';
         $req->taxFlag = '1';
