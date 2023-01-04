@@ -2,7 +2,7 @@
 
 use GuzzleHttp\Exception\GuzzleException;
 use PHPUnit\Framework\TestCase;
-use stlswm\PiaoZoneAe\Business\InvoiceCreate;
+use stlswm\PiaoZoneAe\Business\InvoiceFlushing;
 use stlswm\PiaoZoneAe\Client;
 use stlswm\PiaoZoneAe\Request\InvoiceFlushingReq;
 
@@ -22,7 +22,7 @@ class InvoiceFlushingTest extends TestCase
         $client = Client::newClient(Config::ClientId, Config::ClientSecret, Config::EncryptKey);
         $client->setToken(Config::AccessToken);
         $req = new InvoiceFlushingReq();
-        $res = InvoiceCreate::req($client, $req);
+        $res = InvoiceFlushing::req($client, $req);
         var_dump($res);
         $this->assertEquals('0000', $res->errcode);
     }
