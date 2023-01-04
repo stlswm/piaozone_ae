@@ -16,5 +16,6 @@ class InvoiceCreateItem
     public string $discountType;
     public string $goodsCode;
     public string $taxAmount;
+    public string $goodsName;
     public string $deduction;
 }

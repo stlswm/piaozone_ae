@@ -21,14 +21,14 @@ class InvoiceCreate
     {
         $response = $client->request("/m5/bill/invoice/create", $invoiceCreateReq, [
             'access_token' => $client->getToken(),
-            'reqid'        => bcmul(microtime(true), 1000, 0),
-        ]);
+            'reqid'        => bcmul(microtime(true), 1000, 0).mt_rand(100, 999),
+        ], true);
         $resData = json_decode($response);
         if (!$resData) {
             throw new Exception('无法解析返回：'.$response);
         }
         if ($resData->errcode != '0000') {
-            throw new Exception($resData->description);
+            throw new Exception($resData->description.',response:'.$response);
         }
         $res = new InvoiceCreateRes();
         $res->errcode = $resData->errcode;

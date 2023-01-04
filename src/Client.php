@@ -94,6 +94,7 @@ class Client
      * @param  bool    $encrypt
      * @return string
      * @throws GuzzleException
+     * @throws Exception
      */
     public function request(string $router, ?Req $req, array $query = [], bool $encrypt = false): string
     {
@@ -109,17 +110,18 @@ class Client
             $body = $this->encryptBody($body);
         }
         $client = new \GuzzleHttp\Client(['base_uri' => $api]);
-        $response = $client->request('POST', $router, [
-            'headers' => [
-                'Content-Type' => 'application/json',
-            ],
-            'query'   => $query,
-            'body'    => $body,
-        ]);
-        if ($response->getStatusCode() != 200) {
-            throw new Exception('网络异常：'.$response->getBody()->getContents());
+        try {
+            $response = $client->request('POST', $router, [
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                ],
+                'query'   => $query,
+                'body'    => $body,
+            ]);
+            return $response->getBody()->getContents();
+        } catch (Exception $e) {
+            throw new Exception('网络异常：'.$e->getResponse()->getBody()->getContents());
         }
-        return $response->getBody()->getContents();
     }
 
     /**

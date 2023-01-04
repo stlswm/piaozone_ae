@@ -30,7 +30,7 @@ class AccessToken
             throw new Exception('无法解析返回：'.$response);
         }
         if ($resData->errcode != '0000') {
-            throw new Exception($resData->description);
+            throw new Exception($resData->description.',response:'.$response);
         }
         $res = new AccessTokenRes();
         $res->errcode = $resData->errcode;
