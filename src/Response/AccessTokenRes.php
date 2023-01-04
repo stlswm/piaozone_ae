@@ -4,10 +4,6 @@ namespace stlswm\PiaoZoneAe\Response;
 
 use stlswm\PiaoZoneAe\Request\Req;
 
-/**
- * Class AccessTokenReq
- * @package stlswm\PiaoZone\Request
- */
 class AccessTokenRes extends Req
 {
 

@@ -5,20 +5,21 @@ namespace stlswm\PiaoZoneAe\Business;
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
 use stlswm\PiaoZoneAe\Client;
-use stlswm\PiaoZoneAe\Response\QuantifySearchRes;
+use stlswm\PiaoZoneAe\Response\InvoiceCreateRes;
+use stlswm\PiaoZoneAe\Request\InvoiceCreateReq;
 
-
-class QuantitySearch
+class InvoiceCreate
 {
     /**
-     * @param  Client  $client
-     * @return QuantifySearchRes
+     * @param  Client            $client
+     * @param  InvoiceCreateReq  $invoiceCreateReq
+     * @return InvoiceCreateRes
      * @throws GuzzleException
      * @throws Exception
      */
-    public static function req(Client $client): QuantifySearchRes
+    public static function req(Client $client, InvoiceCreateReq $invoiceCreateReq): InvoiceCreateRes
     {
-        $response = $client->request('/bill/hx/yl/get', null, [
+        $response = $client->request("/m5/bill/invoice/create", $invoiceCreateReq, [
             'access_token' => $client->getToken(),
             'reqid'        => bcmul(microtime(true), 1000, 0),
         ]);
@@ -29,10 +30,13 @@ class QuantitySearch
         if ($resData->errcode != '0000') {
             throw new Exception($resData->description);
         }
-        $res = new QuantifySearchRes();
+        $res = new InvoiceCreateRes();
         $res->errcode = $resData->errcode;
         $res->description = $resData->description;
-        $res->total = $resData->data->total;
+        $res->invoiceCode = $resData->data->invoiceCode;
+        $res->invoiceNo = $resData->data->invoiceNo;
+        $res->pdfUrl = $resData->data->pdfUrl;
+        $res->serialNo = $resData->data->serialNo;
         return $res;
     }
 }

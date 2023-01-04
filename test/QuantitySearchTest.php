@@ -21,7 +21,8 @@ class QuantitySearchTest extends TestCase
     public function testReq()
     {
         $client = Client::newClient(Config::ClientId, Config::ClientSecret, Config::EncryptKey);
-        $res = QuantitySearch::req($client, Config::AccessToken);
+        $client->setToken(Config::AccessToken);
+        $res = QuantitySearch::req($client);
         var_dump($res);
         $this->assertEquals('0000', $res->errcode);
     }
