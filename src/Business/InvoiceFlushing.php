@@ -7,9 +7,12 @@ use GuzzleHttp\Exception\GuzzleException;
 use stlswm\PiaoZoneAe\Client;
 use stlswm\PiaoZoneAe\Request\InvoiceFlushingReq;
 use stlswm\PiaoZoneAe\Response\InvoiceFlushingRes;
-use stlswm\PiaoZoneAe\Response\QuantifySearchRes;
 
-
+/**
+ * 发票冲红
+ * Class InvoiceFlushing
+ * @package stlswm\PiaoZoneAe\Business
+ */
 class InvoiceFlushing
 {
     /**
