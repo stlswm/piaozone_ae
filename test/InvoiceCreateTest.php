@@ -45,9 +45,6 @@ class InvoiceCreateTest extends TestCase
         $item->goodsName = '装卸费';
         $req->items = [$item];
 
-        // echo json_encode($req,JSON_UNESCAPED_UNICODE);
-        // DIE;
-
         $res = InvoiceCreate::req($client, $req);
         var_dump($res);
         $this->assertEquals('0000', $res->errcode);
