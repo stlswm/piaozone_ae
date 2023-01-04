@@ -8,7 +8,6 @@ class InvoiceCreateRes extends Req
 {
 
     public string $errcode;
-
     public string $description;
 
     public string $invoiceCode;
