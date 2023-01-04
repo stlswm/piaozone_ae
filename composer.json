@@ -17,7 +17,6 @@
   "require": {
     "php": ">=7.4",
     "ext-json": "*",
-    "guzzlehttp/guzzle": "~6.0",
     "ext-openssl": "*",
     "ext-bcmath": "*"
   },
@@ -27,6 +26,7 @@
     }
   },
   "require-dev": {
-    "phpunit/phpunit": "^8"
+    "phpunit/phpunit": "^8",
+    "guzzlehttp/guzzle": "~6.0"
   }
 }
