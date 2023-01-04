@@ -7,7 +7,6 @@ use GuzzleHttp\Exception\GuzzleException;
 use stlswm\PiaoZoneAe\Client;
 use stlswm\PiaoZoneAe\Request\AccessTokenReq;
 use stlswm\PiaoZoneAe\Response\AccessTokenRes;
-use stlswm\PiaoZoneAe\Response\QuantifySearchRes;
 
 
 class AccessToken
