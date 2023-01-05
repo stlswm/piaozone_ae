@@ -27,16 +27,15 @@ class InvoiceCreate
         if (!$resData) {
             throw new Exception('无法解析返回：'.$response);
         }
-        if ($resData->errcode != '0000') {
-            throw new Exception($resData->description.',response:'.$response);
-        }
         $res = new InvoiceCreateRes();
         $res->errcode = $resData->errcode;
         $res->description = $resData->description;
-        $res->invoiceCode = $resData->data->invoiceCode;
-        $res->invoiceNo = $resData->data->invoiceNo;
-        $res->pdfUrl = $resData->data->pdfUrl;
-        $res->serialNo = $resData->data->serialNo;
+        if ($resData->data) {
+            $res->invoiceCode = $resData->data->invoiceCode;
+            $res->invoiceNo = $resData->data->invoiceNo;
+            $res->pdfUrl = $resData->data->pdfUrl;
+            $res->serialNo = $resData->data->serialNo;
+        }
         return $res;
     }
 }
