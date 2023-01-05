@@ -20,6 +20,7 @@ class InvoiceFlushing
      * @param  InvoiceFlushingReq  $invoiceFlushing
      * @return InvoiceFlushingRes
      * @throws GuzzleException
+     * @throws Exception
      */
     public static function req(Client $client, InvoiceFlushingReq $invoiceFlushing): InvoiceFlushingRes
     {
@@ -32,7 +33,7 @@ class InvoiceFlushing
             throw new Exception('无法解析返回：'.$response);
         }
         if ($resData->errcode != '0000') {
-            throw new Exception($resData->description);
+            throw new Exception($resData->description.',response:'.$response);
         }
         $res = new InvoiceFlushingRes();
         $res->errcode = $resData->errcode;
