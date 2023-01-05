@@ -27,7 +27,7 @@ class InvoiceFlushing
         $response = $client->request('/m5/bill/invoice/invalid', $invoiceFlushing, [
             'access_token' => $client->getToken(),
             'reqid'        => bcmul(microtime(true), 1000, 0),
-        ]);
+        ], true);
         $resData = json_decode($response);
         if (!$resData) {
             throw new Exception('无法解析返回：'.$response);

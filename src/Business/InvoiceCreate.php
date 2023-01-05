@@ -30,7 +30,7 @@ class InvoiceCreate
         $res = new InvoiceCreateRes();
         $res->errcode = $resData->errcode;
         $res->description = $resData->description;
-        if ($resData->data) {
+        if (!empty($resData->data)) {
             $res->invoiceCode = $resData->data->invoiceCode;
             $res->invoiceNo = $resData->data->invoiceNo;
             $res->pdfUrl = $resData->data->pdfUrl;
