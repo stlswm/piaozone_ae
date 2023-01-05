@@ -23,6 +23,7 @@ class InvoiceCreate
             'access_token' => $client->getToken(),
             'reqid'        => bcmul(microtime(true), 1000, 0).mt_rand(100, 999),
         ], true);
+        echo $response;
         $resData = json_decode($response);
         if (!$resData) {
             throw new Exception('无法解析返回：'.$response);
@@ -31,10 +32,9 @@ class InvoiceCreate
         $res->errcode = $resData->errcode;
         $res->description = $resData->description;
         if (!empty($resData->data)) {
-            $res->invoiceCode = $resData->data->invoiceCode;
-            $res->invoiceNo = $resData->data->invoiceNo;
-            $res->pdfUrl = $resData->data->pdfUrl;
-            $res->serialNo = $resData->data->serialNo;
+            foreach ($resData->data as $key => $value) {
+                $res->{$key} = $value;
+            }
         }
         return $res;
     }

@@ -26,14 +26,14 @@ class InvoiceCreateTest extends TestCase
         $req->salerTaxNo = Config::SalerTaxNo;
         $req->salerAddress = Config::SalerAddress;
         $req->buyerName = '王敏';
-        $req->invoiceAmount = '0.94';//金额合计(不含税)
+        $req->invoiceAmount = '1.94';//金额合计(不含税)
         $req->totalTaxAmount = '0.06';//总税额
         $req->totalAmount = '1';//价税合计(小写)
         $req->type = '0';
         $req->taxFlag = '1';
         $req->inventoryFlag = '0';
         $req->drawer = '王瑜';
-        $req->serialNo = '2023010414231000';
+        $req->serialNo = '2023010414231001';
 
         $req->invoiceType = '1';
         $item = new InvoiceCreateItem();
